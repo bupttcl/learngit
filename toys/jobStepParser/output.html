@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+
+    <!-- prepare document with fixed height -->
+    <div id="main" style="height:400px"﻿></div>
+    <!-- involve ECharts -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // set path
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar' // use
+            ],
+            function (ec) {
+                // use dom to init echarts
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                var option = {
+					tooltip : {
+						trigger: 'axis',
+						axisPointer : {            
+							type : 'shadow'        // 'line' | 'shadow'
+						}
+					},
+					legend: {
+						data:['offset','apiStep', 'createClusterPlanStep','updateClusterDataStep1','createVMStep','updateClusterDataStep2','nodeStatusVerifyStep']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					xAxis : [
+						{
+							type : 'value'
+						}
+					],
+					yAxis : [
+						{
+							type : 'category',
+							data : ['112','114','113',]
+						}
+					],
+					series : [
+						{
+							name:'apiStep',
+							type:'bar',
+							stack: 'total',
+							itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+							data:['16.09','15.854','50.87',]
+						},
+						{
+							name:'createClusterPlanStep',
+							type:'bar',
+							stack: 'total',
+							itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+							data:['0.931','2.624','0.49',]
+						},
+						{
+							name:'updateClusterDataStep1',
+							type:'bar',
+							stack: 'total',
+							itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+							data:['0.383','8.026','0.409',]
+						},
+						{
+							name:'createVMStep',
+							type:'bar',
+							stack: 'total',
+							itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+							data:['21.179','784.051','111.645',]
+						},
+						{
+							name:'updateClusterDataStep2',
+							type:'bar',
+							stack: 'total',
+							itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+							data:['1.783','227.727','3.267',]
+						},
+						{
+							name:'nodeStatusVerifyStep',
+							type:'bar',
+							stack: 'total',
+							itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+							data:['0.033','0.034','0.034',]
+						},
+						
+					]
+				};
+                    
+        
+                // load datas to echarts 
+                myChart.setOption(option).setTheme('macarons'); 
+            }
+		);	
+    </script>
+		
+</body>

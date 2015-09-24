@@ -1,0 +1,8 @@
+]
+						},
+						{
+							name:'createClusterPlanStep',
+							type:'bar',
+							stack: 'total',
+							itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+							data:[

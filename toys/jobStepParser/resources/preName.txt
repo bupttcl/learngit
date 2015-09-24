@@ -1,0 +1,50 @@
+﻿></div>
+    <!-- involve ECharts -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // set path
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar' // use
+            ],
+            function (ec) {
+                // use dom to init echarts
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                var option = {
+					tooltip : {
+						trigger: 'axis',
+						axisPointer : {            
+							type : 'shadow'        // 'line' | 'shadow'
+						}
+					},
+					legend: {
+						data:['offset','apiStep', 'createClusterPlanStep','updateClusterDataStep1','createVMStep','updateClusterDataStep2','nodeStatusVerifyStep']
+					},
+					toolbox: {
+						show : true,
+						feature : {
+							mark : {show: true},
+							dataView : {show: true, readOnly: false},
+							magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+							restore : {show: true},
+							saveAsImage : {show: true}
+						}
+					},
+					calculable : true,
+					xAxis : [
+						{
+							type : 'value'
+						}
+					],
+					yAxis : [
+						{
+							type : 'category',
+							data : [
